@@ -32,12 +32,13 @@ In this step, we'll set up a redux store and add in some middleware so that we c
 
 ### Instructions
 
-- In the `src` folder, add a folder and name it `redux`.
-- Add a file in the redux folder and name it `budgetReducer.js`
+
+* In the `src` folder, add a folder and name it `redux`.
+* Add a file in the redux folder and name it `budgetReducer.js`
 
 In budgetReducer.js:
+* Create an `initialState` variable that's an object with the following properties. This variable will eventually be passed into the reducer function to set an initial state for the store:
 
-- Create an `initialState` variable that's an object with the following properties. This variable will eventually be passed into the reducer function to set an initial state for the store:
 
   ```
   {
@@ -52,6 +53,7 @@ In budgetReducer.js:
 - `export default` the reducer function.
 
 Now we'll create the store.
+
 
 - In the `redux` folder, create a file named `store.js`
 - import `createStore`, `combineReducers` and `applyMiddleware` from redux
@@ -241,7 +243,8 @@ In this step, we'll create a second reducer to manage the logged in user's data.
 
 ### Instructions
 
-- Create a new file named `userReducer.js` in the `redux` folder
+* Create a new file named `userReducer.js` in the `redux` folder
+
 
 In userReducer.js:
 
