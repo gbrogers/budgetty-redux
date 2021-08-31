@@ -15,6 +15,10 @@ import { requestBudgetData, addPurchase, removePurchase } from '../../redux/budg
 
 
 class Budget extends Component {
+  componentDidMount() {
+    this.props.requestUserData();
+    this.props.requestBudgetData();
+  }
 
   componentDidMount() {
     // WHEN THE COMPONENT MOUNTS, THE ACTION CREATOR IS INVOKED, THE REDUCER FUNCTION FIRES, AND STATE IS UPDATED ACCORDINGLY   // IN THE REDUX STORE
@@ -23,12 +27,15 @@ class Budget extends Component {
   }
 
   render() {
+
   // DESTRUCTURING VALUES HERE IS OPTIONAL BUT RECOMMENDED FOR CLEANER JSX
+
     const { loading, purchases, budgetLimit } = this.props.budget;
     const { firstName, lastName } = this.props.user;
     return (
       <Background>
         {loading ? <Loading /> : null}
+
         <div className='budget-container'>
           <Nav firstName={firstName} lastName={lastName} />
           <div className='content-container'>
@@ -40,13 +47,14 @@ class Budget extends Component {
               <DisplayPurchases purchases={purchases} removePurchase={this.props.removePurchase} />
             </div>
             <div className='chart-container'>
+
               <Chart1 purchases={purchases} budgetLimit={budgetLimit} />
               <Chart2 purchases={purchases} />
             </div>
           </div>
         </div>
       </Background>
-    )
+    );
   }
 }
 
@@ -61,3 +69,4 @@ function mapStateToProps(state) {
 
 // IN ORDER TO ACCESS THE REQUESTUSERDATA ACTION CREATOR, YOU NEED TO CONNECT IT TO THE REDUCER FUNCTION THROUGH THE CONNECT METHOD. THE CONNECT METHOD ACCEPTS TWO ARGUMENTS, A MAPSTATETOPROPS OBJECT, AND A MAPDISPATCHTOPROPS OBJECT. OUR DISPATCHED ACTIONS GO INSIDE OF THE SECOND ARGUMENT OBJECT AS A KEY/VALUE PAIR. 
 export default connect(mapStateToProps, { requestUserData, requestBudgetData, addPurchase, removePurchase })(Budget);
+
